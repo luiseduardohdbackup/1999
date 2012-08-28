@@ -23,6 +23,10 @@ import com.impulse.event.EventManager;
 
 public class Game1999 extends Applet implements Runnable, MouseListener, MouseMotionListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Image dbImage;
 	private Graphics dbg;
 	private int baseX = 0;
