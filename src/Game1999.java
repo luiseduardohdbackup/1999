@@ -57,6 +57,7 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 //////////////////////////////////////////////////////////////////////////////////////////////////////////			
 		
 	public void init(){
+		this.resize(800, 600);
 		addMouseListener(this);
 		addMouseMotionListener(this);
 	}
@@ -138,29 +139,29 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 	
 	private void loadImages(){
 		imageLoader = new ImageLoader(this);
-		imageLoader.loadImage("../images/water_basic.gif");
+		imageLoader.loadImage("../../images/water_basic.gif");
 		//imageLoader.loadImage("land_basic.gif");
 		//imageLoader.loadImage("mountains_basic.gif");
-		imageLoader.loadImage("../images/environment_1.gif");
-		imageLoader.loadImage("../images/environment_2.gif");
-		imageLoader.loadImage("../images/environment_3.gif");
-		imageLoader.loadImage("../images/plane1.gif");
-		imageLoader.loadImage("../images/plane2.gif");
-		imageLoader.loadImage("../images/plane3.gif");
-		imageLoader.loadImage("../images/bullets_small.gif");
-		imageLoader.loadImage("../images/bullets_one.gif");
-		imageLoader.loadImage("../images/bullets_big.gif");
-		imageLoader.loadImage("../images/bullets_two.gif");
-		imageLoader.loadImage("../images/enemy1_1.gif");
-		imageLoader.loadImage("../images/enemy1_2.gif");
-		imageLoader.loadImage("../images/enemy1_3.gif");
-		imageLoader.loadImage("../images/explosion_1.gif");
-		imageLoader.loadImage("../images/explosion_2.gif");
-		imageLoader.loadImage("../images/explosion_3.gif");
-		imageLoader.loadImage("../images/explosion_4.gif");
-		imageLoader.loadImage("../images/explosion_5.gif");
-		imageLoader.loadImage("../images/explosion_6.gif");
-		imageLoader.loadImage("../images/explosion_7.gif");
+		imageLoader.loadImage("../../images/environment_1.gif");
+		imageLoader.loadImage("../../images/environment_2.gif");
+		imageLoader.loadImage("../../images/environment_3.gif");
+		imageLoader.loadImage("../../images/plane1.gif");
+		imageLoader.loadImage("../../images/plane2.gif");
+		imageLoader.loadImage("../../images/plane3.gif");
+		imageLoader.loadImage("../../images/bullets_small.gif");
+		imageLoader.loadImage("../../images/bullets_one.gif");
+		imageLoader.loadImage("../../images/bullets_big.gif");
+		imageLoader.loadImage("../../images/bullets_two.gif");
+		imageLoader.loadImage("../../images/enemy1_1.gif");
+		imageLoader.loadImage("../../images/enemy1_2.gif");
+		imageLoader.loadImage("../../images/enemy1_3.gif");
+		imageLoader.loadImage("../../images/explosion_1.gif");
+		imageLoader.loadImage("../../images/explosion_2.gif");
+		imageLoader.loadImage("../../images/explosion_3.gif");
+		imageLoader.loadImage("../../images/explosion_4.gif");
+		imageLoader.loadImage("../../images/explosion_5.gif");
+		imageLoader.loadImage("../../images/explosion_6.gif");
+		imageLoader.loadImage("../../images/explosion_7.gif");
 	}
 		
 	private void loadEvents(){
@@ -179,13 +180,13 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		for(int i = 0; i < 960; i++){
 			int j = generator.nextInt(1000);
 			if(j <= 900){
-				tiles.add(imageLoader.getImage("../images/water_basic.gif"));
+				tiles.add(imageLoader.getImage("../../images/water_basic.gif"));
 			}else if(j <= 950){
-				tiles.add(imageLoader.getImage("../images/environment_1.gif"));
+				tiles.add(imageLoader.getImage("../../images/environment_1.gif"));
 			}else if(j <= 975){
-				tiles.add(imageLoader.getImage("../images/environment_2.gif"));
+				tiles.add(imageLoader.getImage("../../images/environment_2.gif"));
 			}else if(j <= 1000){
-				tiles.add(imageLoader.getImage("../images/environment_3.gif"));
+				tiles.add(imageLoader.getImage("../../images/environment_3.gif"));
 			}
 		}
 	}
@@ -320,45 +321,45 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 	
 	class AnimationPlane extends Animation{
 		public AnimationPlane(){
-			addFrame(0, imageLoader.getImage("../images/plane1.gif"));
-			addFrame(1, imageLoader.getImage("../images/plane2.gif"));
-			addFrame(2, imageLoader.getImage("../images/plane3.gif"));
+			addFrame(0, imageLoader.getImage("../../images/plane1.gif"));
+			addFrame(1, imageLoader.getImage("../../images/plane2.gif"));
+			addFrame(2, imageLoader.getImage("../../images/plane3.gif"));
 		}
 	}
 	
 	class AnimationBullet extends Animation{
 		public AnimationBullet(){
-			addFrame(0, imageLoader.getImage("../images/bullets_small.gif"));
-			addFrame(1, imageLoader.getImage("../images/bullets_one.gif"));
-			addFrame(2, imageLoader.getImage("../images/bullets_big.gif"));
-			addFrame(3, imageLoader.getImage("../images/bullets_two.gif"));
+			addFrame(0, imageLoader.getImage("../../images/bullets_small.gif"));
+			addFrame(1, imageLoader.getImage("../../images/bullets_one.gif"));
+			addFrame(2, imageLoader.getImage("../../images/bullets_big.gif"));
+			addFrame(3, imageLoader.getImage("../../images/bullets_two.gif"));
 		}
 	}
 	
 	class AnimationEnemy1 extends Animation{
 		public AnimationEnemy1(){
-			addFrame(0, imageLoader.getImage("../images/enemy1_1.gif"));
-			addFrame(1, imageLoader.getImage("../images/enemy1_2.gif"));
-			addFrame(2, imageLoader.getImage("../images/enemy1_3.gif"));
+			addFrame(0, imageLoader.getImage("../../images/enemy1_1.gif"));
+			addFrame(1, imageLoader.getImage("../../images/enemy1_2.gif"));
+			addFrame(2, imageLoader.getImage("../../images/enemy1_3.gif"));
 		}
 	}
 	
 	class AnimationExplosion1 extends Animation{
 		public AnimationExplosion1(){
-			addFrame(0, imageLoader.getImage("../images/explosion_1.gif"));
-			addFrame(1, imageLoader.getImage("../images/explosion_1.gif"));
-			addFrame(2, imageLoader.getImage("../images/explosion_2.gif"));
-			addFrame(3, imageLoader.getImage("../images/explosion_2.gif"));
-			addFrame(4, imageLoader.getImage("../images/explosion_3.gif"));
-			addFrame(5, imageLoader.getImage("../images/explosion_3.gif"));
-			addFrame(6, imageLoader.getImage("../images/explosion_4.gif"));
-			addFrame(7, imageLoader.getImage("../images/explosion_4.gif"));
-			addFrame(8, imageLoader.getImage("../images/explosion_5.gif"));
-			addFrame(9, imageLoader.getImage("../images/explosion_5.gif"));
-			addFrame(10, imageLoader.getImage("../images/explosion_6.gif"));
-			addFrame(11, imageLoader.getImage("../images/explosion_6.gif"));
-			addFrame(12, imageLoader.getImage("../images/explosion_7.gif"));
-			addFrame(13, imageLoader.getImage("../images/explosion_7.gif"));
+			addFrame(0, imageLoader.getImage("../../images/explosion_1.gif"));
+			addFrame(1, imageLoader.getImage("../../images/explosion_1.gif"));
+			addFrame(2, imageLoader.getImage("../../images/explosion_2.gif"));
+			addFrame(3, imageLoader.getImage("../../images/explosion_2.gif"));
+			addFrame(4, imageLoader.getImage("../../images/explosion_3.gif"));
+			addFrame(5, imageLoader.getImage("../../images/explosion_3.gif"));
+			addFrame(6, imageLoader.getImage("../../images/explosion_4.gif"));
+			addFrame(7, imageLoader.getImage("../../images/explosion_4.gif"));
+			addFrame(8, imageLoader.getImage("../../images/explosion_5.gif"));
+			addFrame(9, imageLoader.getImage("../../images/explosion_5.gif"));
+			addFrame(10, imageLoader.getImage("../../images/explosion_6.gif"));
+			addFrame(11, imageLoader.getImage("../../images/explosion_6.gif"));
+			addFrame(12, imageLoader.getImage("../../images/explosion_7.gif"));
+			addFrame(13, imageLoader.getImage("../../images/explosion_7.gif"));
 		}
 	}
 	
