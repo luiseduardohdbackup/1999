@@ -1,5 +1,3 @@
-
-//Java Classes
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Graphics;
@@ -13,7 +11,6 @@ import java.applet.Applet;
 import java.util.ArrayList;
 import java.util.Random;
 
-//Impulse Engine Classes
 import com.impulse.graphics.ImageLoader;
 import com.impulse.graphics.Animation;
 import com.impulse.graphics.Actor;
@@ -21,7 +18,18 @@ import com.impulse.geometry.Vector2;
 import com.impulse.event.Event;
 import com.impulse.event.EventManager;
 
-public class Game1999 extends Applet implements Runnable, MouseListener, MouseMotionListener{
+/**
+ * 
+ * Game 1999
+ * 
+ * Airplane Shooter game
+ * 
+ * This is the Applet that will get run
+ * 
+ * @author andrew
+ *
+ */
+public class Game1999 extends Applet implements Runnable, MouseListener, MouseMotionListener {
 
 	/**
 	 * 
@@ -43,44 +51,59 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 	private int nextBullet;
 	
 	//Animiations
-	private	Animation animationPlane;
-	private	Animation animationEnemy;
-	private	Animation animationExplosion;
-	private	Animation animationBullet;
+	//private	Animation animationPlane;
+	//private	Animation animationEnemy;
+	//private	Animation animationExplosion;
+	//private	Animation animationBullet;
 	
 	//Events
 	private EventManager eventManager;
 	private AddEnemy1 eventAddEnemy1;
 		
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	APPLET FUNCTIONS
-//////////////////////////////////////////////////////////////////////////////////////////////////////////			
-		
-	public void init(){
+	/**
+	 * Applet initializer
+	 */
+	public void init() {
 		this.resize(800, 600);
 		addMouseListener(this);
 		addMouseMotionListener(this);
 	}
 	
-	public void start(){
+	/**
+	 * Applet start
+	 */
+	public void start() {
 	
 		hideMouse();
 	
+		//Create the image to use for the double buffer
 		dbImage = createImage(this.getSize().width, this.getSize().height);
 		dbg = dbImage.getGraphics();
 				
+		//Loading time
 		loadImages();
 		loadEvents();
 		loadTiles();
 		loadSprites();
 		
+		//Start the thread that will run the game
 		Thread t = new Thread(this);
 		t.start();
 	}
 	
+	/**
+	 * Applet stop
+	 */
 	public void stop(){}
+	
+	/**
+	 * Applet destroy
+	 */
 	public void destroy(){}
 			
+	/**
+	 * Runs the thread for the game
+	 */
 	public void run(){
 		Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
 		while(true){
@@ -93,14 +116,27 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		}
 	}
 			
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	MOUSE FUNCTIONS
-//////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	
+	/**
+	 * MouseListener mouseEntered
+	 */
 	public void mouseEntered(MouseEvent e){}
+	
+	/**
+	 * MouseListener mouseExited
+	 */
    	public void mouseExited(MouseEvent e){}
+   	
+   	/**
+	 * MouseListener mouseClicked
+	 */
   	public void mouseClicked(MouseEvent e){}
 	
+  	/**
+	 * MouseListener mousePressed
+	 * 
+	 * Shoots the weapons
+	 * 
+	 */
    	public void mousePressed(MouseEvent e){
 		boolean canShoot = false;
 		for(int i = 0; i <= 10; i++){
@@ -119,13 +155,29 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		}
    	}
 	
+   	/**
+	 * MouseListener mouseReleased
+	 */
    	public void mouseReleased(MouseEvent e){}
+   	
+   	/**
+	 * MouseListener mouseDragged
+	 */
 	public void mouseDragged(MouseEvent e){}
 	
+	/**
+	 * MouseListener mouseMoved
+	 * 
+	 * Moves the airplane
+	 * 
+	 */
 	public void mouseMoved(MouseEvent e){
 		plane.setLocation(new Vector2.Integer(e.getX(), e.getY()));
 	}
 	
+	/**
+	 * Hides the mouse in the applet window
+	 */
 	private void hideMouse(){
 		int[] pixels = new int[16 * 16];
 		Image image = Toolkit.getDefaultToolkit().createImage(new MemoryImageSource(16, 16, pixels, 0, 16));
@@ -133,10 +185,9 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		setCursor(transparentCursor);
 	}
 	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	LOADING FUNCTIONS
-//////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	
+	/**
+	 * Load all the images we will be using
+	 */
 	private void loadImages(){
 		imageLoader = new ImageLoader(this);
 		imageLoader.loadImage("../../images/water_basic.gif");
@@ -164,6 +215,9 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		imageLoader.loadImage("../../images/explosion_7.gif");
 	}
 		
+	/**
+	 * Load Events
+	 */
 	private void loadEvents(){
 	
 		eventManager = new EventManager();
@@ -174,6 +228,11 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		eventManager.addEvent(eventAddEnemy1);
 	}
 	
+	/**
+	 * Load tiles
+	 * 
+	 * This will randomly place tiles in the level
+	 */
 	private void loadTiles(){
 		tiles = new ArrayList<Image>();
 		Random generator = new Random();
@@ -191,6 +250,9 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		}
 	}
 	
+	/**
+	 * Load sprites
+	 */
 	private void loadSprites(){
 	
 		actors = new ArrayList<Actor>();
@@ -227,10 +289,10 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 	
 	}
 	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	RENDER FUNCTIONS
-//////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	
+
+	/**
+	 * Updates the applet, draws on the double buffer
+	 */
 	public void update(Graphics g){
 		dbg.setColor(getBackground());
 		dbg.fillRect(0, 0, this.getSize().width, this.getSize().height);
@@ -239,6 +301,9 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		g.drawImage(dbImage, 0, 0, this);
 	}
 	
+	/**
+	 * Paints on the applet, game loop
+	 */
 	public void paint(Graphics g){
 		
 		drawTiles();
@@ -264,6 +329,9 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 			
 	}
 			
+	/**
+	 * Draws tiles
+	 */
 	private void drawTiles(){
 		int x = baseX;
 		int y = baseY;
@@ -290,12 +358,11 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		}
 	}
 	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	LOGIC FUNCTIONS
-//////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	
-	//This checks to see if a bullet hits an enemy
-	//if it does it will call the enemy event listner and destroy the bullet
+	/**
+	 * This checks to see if a bullet hits an enemy
+	 * if it does it will call the enemy event listener and destroy the bullet
+	 * @param b
+	 */
 	private void checkBulletCollisions(Bullet b){
 		for(Actor a : actors){
 			if(a instanceof Plane && a != plane && a.isActive()){
@@ -306,7 +373,9 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 		}
 	}
 	
-	//This checks to see if an enemy collides with the plane
+	/**
+	 * This checks to see if an enemy collides with the plane
+	 */
 	private void checkEnemyCollisions(){
 		for(Actor a : actors){
 			if(a instanceof Plane && a != plane){
@@ -314,10 +383,6 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 			}
 		}
 	}
-	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	ANIMATIONS
-//////////////////////////////////////////////////////////////////////////////////////////////////////////		
 	
 	class AnimationPlane extends Animation{
 		public AnimationPlane(){
@@ -362,10 +427,6 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 			addFrame(13, imageLoader.getImage("../../images/explosion_7.gif"));
 		}
 	}
-	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	EVENTS
-//////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	class AddEnemy1 extends Event{
 		public void run(){

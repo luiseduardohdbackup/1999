@@ -1,13 +1,14 @@
-
-//Java Imports
 import java.awt.Graphics;
 import java.applet.Applet;
 
-//Impulse Engine Imports
-import com.impulse.graphics.Actor;
 import com.impulse.graphics.Sprite;
 import com.impulse.event.CollisionListener;
 
+/**
+ * The players airplane
+ * @author andrew
+ *
+ */
 public class Plane extends Sprite{
 	
 	public Plane(Graphics g, Applet a, int x, int y, int w, int h){

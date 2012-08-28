@@ -1,12 +1,14 @@
 
-//Java Imports
 import java.awt.Graphics;
 import java.applet.Applet;
 
-//Impulse Engine Imports
-import com.impulse.graphics.Actor;
 import com.impulse.graphics.Sprite;
 
+/**
+ * The bullets that shoot from the plane
+ * @author andrew
+ *
+ */
 public class Bullet extends Sprite{
 
 	private int level;
