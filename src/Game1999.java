@@ -335,7 +335,6 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 	private void drawTiles(){
 		int x = baseX;
 		int y = baseY;
-		int rows = 80;
 		int rowDrawCount = 0;
 		for(int j = 0; j < 960; j++){
 			Image i = tiles.get(j);
@@ -351,7 +350,6 @@ public class Game1999 extends Applet implements Runnable, MouseListener, MouseMo
 				y += 50;
 				x = 0;
 			}
-			rows--;
 		}
 		if(baseY < 0){
 			baseY += 1;
